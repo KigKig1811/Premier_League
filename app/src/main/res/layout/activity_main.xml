@@ -4,21 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    tools:context=".view.MainActivity"
+
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
         >
-        <ImageView
-            android:layout_margin="10dp"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo"/>
-       <!-- <com.google.android.material.tabs.TabLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="#BD3232">
+            <ImageView
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo1"/>
+        </LinearLayout>
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="5dp"/>
+
+       <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
+           android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -38,24 +54,17 @@
                 android:text="Match"
                 android:background="@color/black"/>
 
-        </com.google.android.material.tabs.TabLayout>-->
-        <FrameLayout
-            android:id="@+id/frameLayoutHome"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        </com.google.android.material.tabs.TabLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:id="@+id/rec1"
                 tools:listitem="@layout/adapter_team"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"/>
-        </FrameLayout>
 
     </LinearLayout>
-
 
 
 </androidx.core.widget.NestedScrollView>

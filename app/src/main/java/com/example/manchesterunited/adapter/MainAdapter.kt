@@ -2,16 +2,23 @@ package com.example.manchesterunited.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.NonNull
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.manchesterunited.databinding.AdapterTeamBinding
-import com.example.manchesterunited.model.Team
+import com.example.manchesterunited.model.Data
+import com.example.manchesterunited.model.TeamX
+import com.example.manchesterunited.model.Teams
 
 class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
-    var teams = mutableListOf<Team>()
 
-    fun setTeamList(team : List<Team>){
+    var teams = mutableListOf<Teams>()
+
+    /*fun setTeamList(team: List<Teams>){
+        this.teams = teams.toMutableList()
+        notifyDataSetChanged()
+    }*/
+    fun setTeamList(teams: List<Teams>){
         this.teams = teams.toMutableList()
         notifyDataSetChanged()
     }
@@ -22,7 +29,6 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = AdapterTeamBinding.inflate(inflater,parent,false)
-
         return MainViewHolder(binding)
     }
 

@@ -3,12 +3,14 @@ package com.example.manchesterunited.service
 import com.example.manchesterunited.utils.Constants.Companion.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
+     val request =  OAuthInterceptor()
     val logging = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.HEADERS)
 
@@ -16,6 +18,7 @@ object RetrofitInstance {
         .addInterceptor(OAuthInterceptor())
         .addInterceptor(logging)
         .build()
+
 
     var retrofitService: Retrofit_Service? = null
 
@@ -27,6 +30,7 @@ object RetrofitInstance {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             retrofitService = retrofit.create(Retrofit_Service::class.java)
+
         }
         return retrofitService!!
     }

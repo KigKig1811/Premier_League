@@ -3,14 +3,12 @@ package com.example.manchesterunited.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.manchesterunited.R
 import com.example.manchesterunited.adapter.MainAdapter
-import com.example.manchesterunited.adapter.TeamAdapter
 import com.example.manchesterunited.databinding.ActivityMainBinding
-import com.example.manchesterunited.databinding.FragmentTeamBinding
+
 import com.example.manchesterunited.reponsitory.MainRepository
 import com.example.manchesterunited.service.RetrofitInstance
 import com.example.manchesterunited.viewmodel.MainViewModel
@@ -22,9 +20,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var viewModel: MainViewModel
 
-
     private val retrofitService = RetrofitInstance.getInstance()
     val adapter = MainAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,18 +30,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         viewModel =
             ViewModelProvider(this, ViewModelFactory(MainRepository(retrofitService))).get(
                 MainViewModel::class.java
             )
         binding.rec1.adapter = adapter
-
-
-        viewModel.teamList.observe(this, Observer {
-
-           
+        viewModel.teams.observe(this, Observer {
             Log.d(TAG, "onCreate: $it")
             adapter.setTeamList(it)
+
         })
 
         viewModel.errorMessage.observe(this, Observer {
