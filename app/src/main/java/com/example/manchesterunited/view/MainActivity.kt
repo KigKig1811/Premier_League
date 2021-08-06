@@ -7,12 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.manchesterunited.R
 import com.example.manchesterunited.adapter.MainAdapter
+import com.example.manchesterunited.adapter.ViewPagerAdapter
 import com.example.manchesterunited.databinding.ActivityMainBinding
-
 import com.example.manchesterunited.reponsitory.MainRepository
 import com.example.manchesterunited.service.RetrofitInstance
 import com.example.manchesterunited.viewmodel.MainViewModel
 import com.example.manchesterunited.viewmodel.ViewModelFactory
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
 
     private val retrofitService = RetrofitInstance.getInstance()
-    val adapter = MainAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,20 +30,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+       val mViewPagerAdapter = ViewPagerAdapter(this)
+        binding.viewPager.adapter = mViewPagerAdapter
+          TabLayoutMediator(binding.tabLayout,binding.viewPager, TabLayoutMediator.TabConfigurationStrategy {
+              tab, position ->
+              when(position){
+                  0 -> {tab.text = "Teams"}
+                  1 -> {tab.text = "Ranking"}
+                  2 -> {tab.text = "Match"}
+                  3 ->{tab.text = "Information"}
+              }
+          }
+          ).attach()
 
-        viewModel =
-            ViewModelProvider(this, ViewModelFactory(MainRepository(retrofitService))).get(
-                MainViewModel::class.java
-            )
-        binding.rec1.adapter = adapter
-        viewModel.teams.observe(this, Observer {
-            Log.d(TAG, "onCreate: $it")
-            adapter.setTeamList(it)
 
-        })
 
-        viewModel.errorMessage.observe(this, Observer {
-        })
-        viewModel.getAllTeam()
+
     }
 }

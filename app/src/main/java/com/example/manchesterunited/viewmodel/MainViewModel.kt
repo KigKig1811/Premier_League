@@ -17,8 +17,10 @@ class MainViewModel constructor(private val repository: MainRepository): ViewMod
 
     var team = ArrayList<Teams>()
     val teams = MutableLiveData<List<Teams>>()
-
     val errorMessage = MutableLiveData<String>()
+
+
+
 
     fun getAllTeam(){
 
@@ -32,26 +34,28 @@ class MainViewModel constructor(private val repository: MainRepository): ViewMod
                     teams.postValue(team)
                 }
             }
-
             override fun onFailure(call: Call<Data>, t: Throwable) {
                 Log.d("AAA","ERROR")
             }
-
         })
-       /* repository.enqueue(object : Callback<leagues>{
-            override fun onResponse(call: Call<leagues>, response: Response<leagues>) {
+    }
+    var standing = ArrayList<Standings>()
+    val  standings = MutableLiveData<List<Standings>>()
+    fun getRank(){
+        val repository = repository.getRank()
+        repository.enqueue(object : Callback<Rank>{
+            override fun onResponse(call: Call<Rank>, response: Response<Rank>) {
+                val rank: Rank? = response.body()
+                if(rank != null  && rank.api.rank != null){
+                    standing = rank.api.rank as ArrayList<Standings>
+                    standings.postValue(standing)
 
-                val arrayTeam: ArrayList<TeamX> = ArrayList(response.body()?.api?.teams)
-                league.postValue(response.body())
-
-
+                }
             }
-            override fun onFailure(call: Call<leagues>, t: Throwable) {
-            Log.d("AAA","ERROR")
-             errorMessage.postValue(t.message)
+            override fun onFailure(call: Call<Rank>, t: Throwable) {
+                Log.d("AAA","ERROR")
             }
-
-        })*/
+        })
     }
 }
 
