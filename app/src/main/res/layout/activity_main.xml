@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity"
+    android:id="@+id/main"
 
     >
 
@@ -33,24 +34,26 @@
             android:background="@drawable/search_radius"
             android:layout_margin="5dp"/>
 
+
        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-           android:layout_margin="5dp"
-
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_Pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-            <!--<androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rec1"
-                tools:listitem="@layout/adapter_team"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"/>-->
+        </FrameLayout>
+
+
+
     </LinearLayout>
 
 

@@ -1,11 +1,12 @@
 package com.example.manchesterunited.service
 
+import com.example.manchesterunited.reponsitory.MainRepository
 import com.example.manchesterunited.utils.Constants.Companion.BASE_URL
-import okhttp3.Interceptor
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -34,6 +35,9 @@ object RetrofitInstance {
         }
         return retrofitService!!
     }
+
+
+
 }
 
 

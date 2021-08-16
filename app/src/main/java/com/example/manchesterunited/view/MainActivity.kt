@@ -2,17 +2,14 @@ package com.example.manchesterunited.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import android.view.View
 import com.example.manchesterunited.R
-import com.example.manchesterunited.adapter.MainAdapter
 import com.example.manchesterunited.adapter.ViewPagerAdapter
 import com.example.manchesterunited.databinding.ActivityMainBinding
-import com.example.manchesterunited.reponsitory.MainRepository
+import com.example.manchesterunited.fragment.BlankFragment
 import com.example.manchesterunited.service.RetrofitInstance
 import com.example.manchesterunited.viewmodel.MainViewModel
-import com.example.manchesterunited.viewmodel.ViewModelFactory
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
        val mViewPagerAdapter = ViewPagerAdapter(this)
         binding.viewPager.adapter = mViewPagerAdapter
           TabLayoutMediator(binding.tabLayout,binding.viewPager, TabLayoutMediator.TabConfigurationStrategy {
@@ -45,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
     }
+
+
 }

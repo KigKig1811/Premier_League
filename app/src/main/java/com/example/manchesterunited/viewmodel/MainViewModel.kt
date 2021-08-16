@@ -5,8 +5,11 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.manchesterunited.model.*
+
 import com.example.manchesterunited.reponsitory.MainRepository
 import com.example.manchesterunited.view.MainActivity
+import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,13 +22,9 @@ class MainViewModel constructor(private val repository: MainRepository): ViewMod
     val teams = MutableLiveData<List<Teams>>()
     val errorMessage = MutableLiveData<String>()
 
-
-
-
     fun getAllTeam(){
 
         val repository = repository.getAllTeam()
-
         repository.enqueue(object : Callback<Data>{
             override fun onResponse(call: Call<Data>, response: Response<Data>) {
                 val data : Data? = response.body()
@@ -39,25 +38,44 @@ class MainViewModel constructor(private val repository: MainRepository): ViewMod
             }
         })
     }
-    var standing = ArrayList<Standings>()
-    val  standings = MutableLiveData<List<Standings>>()
-    fun getRank(){
-        val repository = repository.getRank()
-        repository.enqueue(object : Callback<Rank>{
+
+    }
+
+
+       /* val repository = repository.getRank()
+        repository.enqueue(object :Callback<Rank>{
+            override fun onResponse(call: Call<Rank>, response: Response<Rank>) {
+                val result: String = response.body().toString()
+                val jsonArray: JsonArray = JsonArray(result.toInt())
+                for(i in 0 until jsonArray.size()){
+                    val jsonArrayRow: JsonArray = jsonArray.asJsonArray[i] as JsonArray
+                    for(j in 0 until jsonArrayRow.size()){
+                        val data : String = jsonArrayRow.asString[j].toString()
+                    }
+                }
+
+            }
+
+            override fun onFailure(call: Call<Rank>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+*/
+        /*repository.enqueue(object : Callback<Rank>{
             override fun onResponse(call: Call<Rank>, response: Response<Rank>) {
                 val rank: Rank? = response.body()
-                if(rank != null  && rank.api.rank != null){
-                    standing = rank.api.rank as ArrayList<Standings>
+                if(rank != null  && rank.api.standings != null ){
+                    standing = rank.api.standings as ArrayList<Standings>
                     standings.postValue(standing)
-
                 }
             }
             override fun onFailure(call: Call<Rank>, t: Throwable) {
                 Log.d("AAA","ERROR")
             }
-        })
-    }
-}
+        })*/
+
+
 
 
 
