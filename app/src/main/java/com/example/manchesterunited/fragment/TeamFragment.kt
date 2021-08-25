@@ -66,10 +66,10 @@ class TeamFragment: Fragment(),TeamAdapter.OnItemClick {
         tabLayout.visibility = View.GONE
         if (position == 0) {
             val fragment: Fragment = Fragment()
-            val blankFragment: BlankFragment = BlankFragment()
+            val teamDetailFragment: TeamDetailFragment = TeamDetailFragment()
             val teamFragment: TeamFragment = TeamFragment()
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout,blankFragment)
+                .replace(R.id.frameLayout,teamDetailFragment)
                 .addToBackStack(BlankFragment::TAG.toString())
                 .commit()
 

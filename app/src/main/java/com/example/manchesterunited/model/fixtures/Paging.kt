@@ -1,4 +1,4 @@
-package com.example.manchesterunited.testModel
+package com.example.manchesterunited.model.fixtures
 
 data class Paging(
     val current: Int,

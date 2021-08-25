@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
               tab, position ->
               when(position){
                   0 -> {tab.text = "Teams"}
-                  1 -> {tab.text = "Ranking"}
-                  2 -> {tab.text = "Match"}
-                  3 ->{tab.text = "Information"}
+                  1 -> {tab.text = "Standing"}
+                  2 -> {tab.text = "Top Scorer"}
+                  3 ->{tab.text = "Fixtures"}
               }
           }
           ).attach()

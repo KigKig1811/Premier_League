@@ -1,0 +1,33 @@
+package com.example.standing2020.model
+
+data class Data(
+    val d: Int,
+    val d_away: Int,
+    val d_home: Int,
+    val ga: Int,
+    val ga_away: Int,
+    val ga_home: Int,
+    val gd: Int,
+    val gd_away: Int,
+    val gd_home: Int,
+    val gf: Int,
+    val gf_away: Int,
+    val gf_home: Int,
+    val idStage: Int,
+    val idTeam: Int,
+    val l: Int,
+    val l_away: Int,
+    val l_home: Int,
+    val note: Any,
+    val p: Int,
+    val p_away: Int,
+    val p_home: Int,
+    val pos: Int,
+    val pts: Int,
+    val pts_away: Int,
+    val pts_home: Int,
+    val teamName: String,
+    val w: Int,
+    val w_away: Int,
+    val w_home: Int
+)

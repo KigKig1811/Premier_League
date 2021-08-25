@@ -1,4 +1,4 @@
-package com.example.manchesterunited.testModel
+package com.example.manchesterunited.model.PlayerOfTeam
 
 data class Team(
     val id: Int,

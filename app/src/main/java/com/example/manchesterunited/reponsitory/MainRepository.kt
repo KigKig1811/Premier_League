@@ -8,5 +8,11 @@ class MainRepository constructor(private val retrofitService: Retrofit_Service) 
 
     fun getAllPlayerofTeam() = retrofitService.getAllPlayerofTeam(33)
 
+    fun getStanding() = retrofitService.getStading(2053)
+
+    fun getTopScorer() = retrofitService.getTopScorer(352)
+
+    fun getFixtures() = retrofitService.getFixtures(10)
+
 
 }
