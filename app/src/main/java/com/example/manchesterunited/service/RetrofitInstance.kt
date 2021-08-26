@@ -31,6 +31,7 @@ object RetrofitInstance {
 
     fun getInstance(): Retrofit_Service {
         if (retrofitService == null) {
+            /*val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()*/
             val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)

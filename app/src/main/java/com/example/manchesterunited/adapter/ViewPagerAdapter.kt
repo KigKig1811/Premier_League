@@ -17,6 +17,7 @@ class ViewPagerAdapter(fragment: MainActivity) : FragmentStateAdapter(fragment) 
            0 -> return TeamFragment()
            1 -> { return StandingFragment()}
            2 -> return TopScorerFragment()
+           3 -> return MatchFragment()
 
            else -> {
             return TeamFragment()

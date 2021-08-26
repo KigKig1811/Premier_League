@@ -27,14 +27,14 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/logo1"/>
         </LinearLayout>
-        <SearchView
+       <!-- <SearchView
             android:id="@+id/searchTeam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/search_radius"
             android:layout_margin="5dp"/>
 
-
+-->
        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_margin="5dp"

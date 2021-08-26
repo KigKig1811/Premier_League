@@ -33,7 +33,9 @@ interface Retrofit_Service {
     fun getTopScorer(@Query("season_id") season_id: Int): Call<TopScorer>
 
     @GET("v3/fixtures")
-    fun getFixtures(@Query("next") next: Int): Call<Match>
+    fun getFixtures(
+        @Query("league") league: Int,
+        @Query("next") next: Int): Call<Match>
 
 
 

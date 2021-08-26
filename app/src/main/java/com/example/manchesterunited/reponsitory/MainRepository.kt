@@ -12,7 +12,7 @@ class MainRepository constructor(private val retrofitService: Retrofit_Service) 
 
     fun getTopScorer() = retrofitService.getTopScorer(352)
 
-    fun getFixtures() = retrofitService.getFixtures(10)
+    fun getFixtures() = retrofitService.getFixtures(39,30)
 
 
 }
