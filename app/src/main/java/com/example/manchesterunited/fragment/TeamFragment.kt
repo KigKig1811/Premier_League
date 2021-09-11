@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.manchesterunited.R
-import com.example.manchesterunited.`interface`.BackPressHandler
 import com.example.manchesterunited.adapter.TeamAdapter
 import com.example.manchesterunited.databinding.ActivityMainBinding
 import com.example.manchesterunited.databinding.TeamFragmentBinding
@@ -43,9 +42,8 @@ class TeamFragment: Fragment(),TeamAdapter.OnItemClick {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel =
-            ViewModelProvider(this, ViewModelFactory(MainRepository(retrofitService))).get(
-                MainViewModel::class.java
+        viewModel = ViewModelProvider(this, ViewModelFactory(MainRepository(retrofitService)))
+                    .get(MainViewModel::class.java
             )
         binding.recyclerViewTeam.adapter = adapter
         viewModel.teams.observe(viewLifecycleOwner, Observer {
@@ -65,9 +63,7 @@ class TeamFragment: Fragment(),TeamAdapter.OnItemClick {
         tabLayout = requireActivity().findViewById(R.id.tabLayout)
         tabLayout.visibility = View.GONE
         if (position == 0) {
-            val fragment: Fragment = Fragment()
             val teamDetailFragment: TeamDetailFragment = TeamDetailFragment()
-            val teamFragment: TeamFragment = TeamFragment()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.frameLayout,teamDetailFragment)
                 .addToBackStack(BlankFragment::TAG.toString())
@@ -77,25 +73,6 @@ class TeamFragment: Fragment(),TeamAdapter.OnItemClick {
             Toast.makeText(activity,item.name, Toast.LENGTH_LONG).show()
         }
     }
-
-
-
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.onBackPressedDispatcher?.addCallback(this,object : OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                val teamFragment: TeamFragment = TeamFragment()
-                val tabLayout : TabLayout
-                tabLayout = requireActivity().findViewById(R.id.tabLayout)
-                tabLayout.visibility = View.VISIBLE
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout,teamFragment)
-                    .addToBackStack(null)
-                    .commit()
-            }
-
-        })
-    }*/
 
 
 }

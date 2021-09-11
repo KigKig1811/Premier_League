@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
        val mViewPagerAdapter = ViewPagerAdapter(this)
         binding.viewPager.adapter = mViewPagerAdapter
           TabLayoutMediator(binding.tabLayout,binding.viewPager, TabLayoutMediator.TabConfigurationStrategy {
