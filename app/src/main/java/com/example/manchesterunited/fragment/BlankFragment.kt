@@ -10,34 +10,23 @@ import com.example.manchesterunited.R
 import com.google.android.material.tabs.TabLayout
 
 
-
-
-
 class BlankFragment : Fragment() {
-     val TAG = BlankFragment ::class.simpleName
-
-
+    val TAG = BlankFragment::class.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val teamFragment: TeamFragment = TeamFragment()
                 val tabLayout: TabLayout
-                if (isEnabled){
+                if (isEnabled) {
                     tabLayout = requireActivity().findViewById(R.id.tabLayout)
                     tabLayout.visibility = View.VISIBLE
                     requireActivity().supportFragmentManager.popBackStack()
-
-                }else{
+                } else {
                     isEnabled = false
                     activity?.onBackPressed()
                 }
-
-
-
             }
-
         })
     }
 
@@ -48,6 +37,4 @@ class BlankFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blank, container, false)
     }
-
-
 }

@@ -14,5 +14,7 @@ class MainRepository constructor(private val retrofitService: Retrofit_Service) 
 
     fun getFixtures() = retrofitService.getFixtures(39,30)
 
+    fun getTopScorerNew() = retrofitService.getTopScorersNew(2021,39)
+
 
 }

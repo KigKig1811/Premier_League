@@ -1,5 +1,6 @@
 package com.example.manchesterunited.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ class StandingAdapter: RecyclerView.Adapter<StandingAdapter.StandingViewHolder>(
 
     var standing = mutableListOf<Data>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setStandingList(standing: List<Data>){
         this.standing = standing.toMutableList()
         notifyDataSetChanged()

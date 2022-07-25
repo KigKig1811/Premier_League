@@ -3,6 +3,7 @@ package com.example.manchesterunited.service
 import com.example.manchesterunited.model.Data
 import com.example.manchesterunited.model.PlayerOfTeam.PlayerOfTeam
 import com.example.manchesterunited.model.fixtures.Match
+import com.example.manchesterunited.model.topScorerNew.TopScorersPlayerNews
 import com.example.standing.model.TopScorer
 import com.example.standing2020.model.Standing
 
@@ -31,6 +32,9 @@ interface Retrofit_Service {
 
     @GET("api/v1/soccer/topscorers")
     fun getTopScorer(@Query("season_id") season_id: Int): Call<TopScorer>
+
+    @GET("players/topscorers")
+    fun getTopScorersNew(@Query("season") season_id: Int,@Query("league") league_Id: Int): Call<TopScorersPlayerNews>
 
     @GET("v3/fixtures")
     fun getFixtures(

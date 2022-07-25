@@ -8,7 +8,7 @@ class Constants {
 
         const val BASE_URL_Standing = "https://elenasport-io1.p.rapidapi.com/"
 
-        const val BASE_URl_TopScorer = "https://app.sportdataapi.com/"
+        const val BASE_URl_TopScorer = "https://api-football-beta.p.rapidapi.com/"
     }
 
 }

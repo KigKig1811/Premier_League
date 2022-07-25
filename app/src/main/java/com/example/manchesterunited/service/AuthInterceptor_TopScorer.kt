@@ -8,7 +8,8 @@ class AuthInterceptor_TopScorer: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var request: Request = chain.request()
             .newBuilder()
-            .addHeader("apikey", "e1d5dae0-f2a4-11eb-a6e3-cbd60bd9853e")
+            .addHeader("X-RapidAPI-Key", "970ab3b956mshee9e618e4bf06f4p149f88jsn066449462113")
+            .addHeader("X-RapidAPI-Host","api-football-beta.p.rapidapi.com" )
             .build()
         return chain.proceed(request)
     }
